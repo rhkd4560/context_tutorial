@@ -34,7 +34,26 @@ const SampleProvider = (props) => {
     )
 }
 
+// :: HoC 를 사용
+const useSample = (WrappedComponent) => {
+    return function UseSample(props) {
+      return (
+        <SampleConsumer>
+          {
+            ({ state, actions }) => (
+              <WrappedComponent
+                value={state.value.value}
+                setValue={actions.setValue}
+              />
+            )
+          }
+        </SampleConsumer>
+      )
+    }
+  }
+
 export {
     SampleProvider,
     SampleConsumer,
+    useSample
 };
