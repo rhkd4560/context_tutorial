@@ -2,16 +2,27 @@ import React from 'react';
 import LeftPane from './components/LeftPane';
 import RightPane from './components/RightPane';
 import { SampleProvider } from './context/sample';
+import { AnotherProvider } from './context/another'
+import Counter from './components/counter'
+
+const AppProvider = ({ contexts, children }) => contexts.reduce(
+  (prev, context) => React.createElement(context, {
+    children: prev
+  }), 
+  children
+);
 
 const App = () => {
   return (
-    <SampleProvider>
+    <AppProvider
+      contexts={[SampleProvider, AnotherProvider]}
+    >
       <div className="panes">
         <LeftPane />
         <RightPane />
       </div>
-    </SampleProvider>
+      <Counter/>
+    </AppProvider>
   );
 };
-
 export default App;
