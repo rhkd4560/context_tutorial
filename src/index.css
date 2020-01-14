@@ -7,6 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.panes {
+  display : flex;
+}
+
+.pane {
+  flex: 1;
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
